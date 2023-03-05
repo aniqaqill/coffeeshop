@@ -1,0 +1,19 @@
+<!-- registrationpage -->
+<!-- Path: projectcoffee\coffeeshoplist\templates\register.html -->
+<!-- Compare this snippet from projectcoffee\coffeeshoplist\templates\coffeeshoplist.html: -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registration</title>
+  </head>
+  <body>
+    {% block content %}
+    <h1>Registration</h1>
+    <form method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <button type="submit">Register</button>
+    </form>
+    {% endblock %}
+  </body>
+</html>
