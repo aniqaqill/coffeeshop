@@ -1,14 +1,41 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 <html>
   <head>
     <title>Coffee Shop List</title>
   </head>
   <body>
+    {% block content %}
     <h1>Coffee Shop List</h1>
-    <ul>
+    <ul class="d-flex flex-wrap">
       {% for coffee_shop in coffee_shops %}
-      <li>{{ coffee_shop.name }}</li>
+      <div class="card mx-2 my-2" style="width: 20rem">
+        <img
+          src="{{ coffee_shop.image.url }}"
+          class="card-img-top"
+          alt="{{ coffee_shop.name }}"
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{ coffee_shop.name }}</h5>
+          <p class="card-text">{{ coffee_shop.description}}</p>
+          <p class="card-text">{{ coffee_shop.address}}</p>
+        </div>
+        <div class="card-footer">
+          <a href="{% url 'rate_shop' coffee_shop.id %}" class="btn btn-primary"
+            >Rate</a
+          >
+          <a
+            href="{{ coffee_shop.website}}"
+            target="_blank"
+            class="btn btn-primary"
+            >Websites</a
+          >
+        </div>
+      </div>
       {% endfor %}
     </ul>
+    <!-- Make a section where user can submit cafe application form -->
+    <!-- <h1 class="">Submit a Cafe</h1> -->
+    {% endblock %}
   </body>
 </html>
