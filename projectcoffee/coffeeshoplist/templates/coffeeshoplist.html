@@ -1,14 +1,17 @@
+{% extends 'base.html' %}
 <!DOCTYPE html>
 <html>
   <head>
     <title>Coffee Shop List</title>
   </head>
   <body>
+    {% block content %}
     <h1>Coffee Shop List</h1>
     <ul>
       {% for coffee_shop in coffee_shops %}
       <li>{{ coffee_shop.name }}</li>
       {% endfor %}
     </ul>
+    {% endblock %}
   </body>
 </html>

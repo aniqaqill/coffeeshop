@@ -6,9 +6,13 @@ from django.contrib.auth.forms import UserCreationForm
 
 def coffeeshoplist(request):
     coffee_shops = CoffeeShop.objects.all()
-    # return HttpResponse("Test")
-    template = loader.get_template('coffeeshoplist.html')
-    return HttpResponse(template.render({'coffee_shops': coffee_shops}, request))
+    if request.user.is_authenticated:
+        # If the user is authenticated, show them the coffee shop list along with a welcome message
+        context = {'coffee_shops': coffee_shops}
+    else:
+        # If the user is not authenticated, only show them the coffee shop list
+        context = {'coffee_shops': coffee_shops}
+    return render(request, 'coffeeshoplist.html', context)
 
 def register(request):
     if request.method == 'POST':
@@ -23,7 +27,7 @@ def register(request):
 def login(request):
     template = loader.get_template('login.html')
     return HttpResponse(template.render({}, request))
-
+ 
  
         
     
