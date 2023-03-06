@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'coffeeshoplist',
+    'star_ratings',
 ]
 
 LOGIN_REDIRECT_URL = '/'
