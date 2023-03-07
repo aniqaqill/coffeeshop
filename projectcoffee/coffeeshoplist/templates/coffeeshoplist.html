@@ -19,7 +19,10 @@
           <h5 class="card-title">{{ coffee_shop.name }}</h5>
           <p class="card-text">{{ coffee_shop.description}}</p>
           <p class="card-text">{{ coffee_shop.address}}</p>
+          <p class="card-text">{{ coffee_shop.phone}}</p>
+          <p class="card-text">{{ coffee_shop.email}}</p>
         </div>
+
         <div class="card-footer">
           <a href="{% url 'rate_shop' coffee_shop.id %}" class="btn btn-primary"
             >Rate</a
@@ -30,8 +33,14 @@
             class="btn btn-primary"
             >Websites</a
           >
+          <a
+            href="{% url 'shop_reviews' coffee_shop.id %}"
+            class="btn btn-primary"
+            >Reviews</a
+          >
         </div>
       </div>
+
       {% endfor %}
     </ul>
     <!-- Make a section where user can submit cafe application form -->
