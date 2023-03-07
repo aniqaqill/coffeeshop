@@ -4,18 +4,40 @@
   <head>
     <title>Coffee Shop List</title>
   </head>
-  <body>
-    <body>
-      {% block content %}
-      <h1>Login</h1>
+  {% block content %}
+  <body class="text-center">
+    <main class="form-signin w-25 m-auto h-100">
       <form method="post">
-        {% csrf_token %} {{ form.as_p }}
-        <button type="submit">Login</button>
+        <img
+          class="mb-4"
+          src="../../../media/assets/cafe.png"
+          alt=""
+          width="80"
+          height="87"
+          style="margin-top: 0%"
+        />
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        {% csrf_token %}
+        <div class="form-group form-floating">
+          <label class="control-label" for="{{ form.username.id_for_label }}"
+            >Username:</label
+          >
+          <div class="card">{{ form.username }}</div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="{{ form.password.id_for_label }}"
+            >Password:</label
+          >
+          <div class="card">{{ form.password }}</div>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">
+          Sign in
+        </button>
+        <p style="margin-top: 30px">
+          Dont have account ? <a href="{% url 'register' %}">Register Here </a>
+        </p>
       </form>
-      <p>
-        Dont have account ? <a href="{% url 'register' %}">Register Here </a>
-      </p>
-      {% endblock %}
-    </body>
+    </main>
   </body>
+  {% endblock %}
 </html>
