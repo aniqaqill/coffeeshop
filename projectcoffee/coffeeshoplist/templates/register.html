@@ -1,0 +1,65 @@
+<!-- registrationpage -->
+<!-- Path: projectcoffee\coffeeshoplist\templates\register.html -->
+<!-- Compare this snippet from projectcoffee\coffeeshoplist\templates\coffeeshoplist.html: -->
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Registration</title>
+  </head>
+  <body>
+    {% block content %}
+    <main class="text-center form-signin w-25 m-auto h-100">
+      <form method="post">
+        <img
+          class="mb-4"
+          src="../../../media/assets/cafe.png"
+          alt=""
+          width="80"
+          height="87"
+        />
+        <h1 class="h3 mb-3 fw-normal">Registration</h1>
+        {% for field in form %} {% if field.errors %}
+        <div class="alert alert-danger">
+          {% for error in field.errors %}
+          <strong>{{ error|escape }}</strong><br />
+          {% endfor %}
+        </div>
+        {% endif %} {% endfor %} {% csrf_token %}
+        <div class="form-group">
+          <label class="control-label" for="{{ form.username.id_for_label }}"
+            >Username:</label
+          >
+          <div class="card">{{ form.username }}</div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="{{ form.password1.id_for_label }}"
+            >Password:</label
+          >
+          <div class="card">{{ form.password1 }}</div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="{{ form.password2.id_for_label }}"
+            >Confirm Password:</label
+          >
+          <div class="card">{{ form.password2 }}</div>
+        </div>
+
+        <div class="form-group">
+          <label class="control-label" for="{{ form.email.id_for_label }}"
+            >Email:</label
+          >
+          <div class="card">{{ form.email }}</div>
+        </div>
+
+        <button class="w-100 btn btn-lg btn-primary" type="submit">
+          Register
+        </button>
+        <p>
+          Already have an account? <a href="{% url 'login' %}">Log in here</a>
+        </p>
+      </form>
+    </main>
+    {% endblock %}
+  </body>
+</html>

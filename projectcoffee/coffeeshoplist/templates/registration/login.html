@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Coffee Shop List</title>
+  </head>
+  {% block content %}
+  <body class="text-center">
+    <main class="form-signin w-25 m-auto h-100">
+      <form method="post">
+        <img
+          class="mb-4"
+          src="../../../media/assets/cafe.png"
+          alt=""
+          width="80"
+          height="87"
+          style="margin-top: 0%"
+        />
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        {% csrf_token %}
+        <div class="form-group">
+          <label class="control-label" for="{{ form.username.id_for_label }}"
+            >Username:</label
+          >
+          <div class="card">
+            {{ form.username }} {% if form.errors.username %}
+            <div class="alert alert-danger">{{ form.errors.username }}</div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="control-label" for="{{ form.password.id_for_label }}"
+            >Password:</label
+          >
+          <div class="card">
+            {{ form.password }} {% if form.errors.password %}
+            <div class="alert alert-danger">{{ form.errors.password }}</div>
+            {% endif %}
+          </div>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">
+          Sign in
+        </button>
+        <p style="margin-top: 30px">
+          Dont have account ? <a href="{% url 'register' %}">Register Here </a>
+        </p>
+      </form>
+    </main>
+  </body>
+  {% endblock %}
+</html>
