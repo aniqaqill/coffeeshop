@@ -22,6 +22,7 @@ from django.conf import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('coffeeshoplist.urls')),
+    path('cafesubmission/', include('cafesubmission.urls' ,namespace='cafesubmission')),
 ]
 
 if settings.DEBUG:
