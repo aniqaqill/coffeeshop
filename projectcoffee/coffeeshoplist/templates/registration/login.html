@@ -18,17 +18,25 @@
         />
         <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
         {% csrf_token %}
-        <div class="form-group form-floating">
+        <div class="form-group">
           <label class="control-label" for="{{ form.username.id_for_label }}"
             >Username:</label
           >
-          <div class="card">{{ form.username }}</div>
+          <div class="card">
+            {{ form.username }} {% if form.errors.username %}
+            <div class="alert alert-danger">{{ form.errors.username }}</div>
+            {% endif %}
+          </div>
         </div>
         <div class="form-group">
           <label class="control-label" for="{{ form.password.id_for_label }}"
             >Password:</label
           >
-          <div class="card">{{ form.password }}</div>
+          <div class="card">
+            {{ form.password }} {% if form.errors.password %}
+            <div class="alert alert-danger">{{ form.errors.password }}</div>
+            {% endif %}
+          </div>
         </div>
         <button class="w-100 btn btn-lg btn-primary" type="submit">
           Sign in
