@@ -82,8 +82,12 @@ WSGI_APPLICATION = 'projectcoffee.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'genitive',
+        'PASSWORD': 'genitive1234',
+        'HOST': 'db-coffeeshop-project.c4m6adxx4dzg.ap-southeast-1.rds.amazonaws.com',
+        'PORT': '5432'
     }
 }
 
